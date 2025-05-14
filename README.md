@@ -1,1 +1,47 @@
 # Reto_POO_2
+```mermaid
+classDiagram
+    class Restaurante {
+        - nombre: String
+        - direccion: String
+        - listaMesas: List<Mesa>
+        + agregarMesa()
+        + listarMesasDisponibles()
+    }
+
+    class Mesa {
+        - numero: int
+        - capacidad: int
+        - estaDisponible: bool
+        + reservar()
+        + liberar()
+    }
+
+    class Reserva {
+        - fechaHora: DateTime
+        - cantidadPersonas: int
+        - estado: String
+        + confirmar()
+        + cancelar()
+    }
+
+    class Cliente {
+        - nombre: String
+        - telefono: String
+        - correo: String
+        + hacerReserva()
+        + cancelarReserva()
+    }
+
+    class Empleado {
+        - nombre: String
+        - cargo: String
+        + gestionarReserva()
+    }
+
+    Restaurante "1" --> "*" Mesa
+    Reserva "1" --> "1" Mesa
+    Reserva "1" --> "1" Cliente
+    Reserva "1" --> "0..1" Empleado
+    Cliente "1" --> "*" Reserva
+```
